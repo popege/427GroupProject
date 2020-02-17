@@ -8,13 +8,13 @@ if nargin <= 0,
     %input_filename = ['G:/EGR/Zhouq/projects', input('Enter a File (PWR directory & FileName): ','s')]
     %   e.g., pwr99/ne9902.dat
     % input_filename='F:\aeron5\t2963_20150102.030'
-    input_filename='C:\Users\zhouq\Dropbox\StudyAway2019_20\GoogleShare\ISR_data\t3150_20170104.022'
+    input_filename='t3150_20170104.022'
 end
 
 fid=fopen(input_filename, 'r', 'b');        %open the input data file
 if fid <=0, disp( [ 'Cannot open input file: ', input_filename,]); return, end
 
-outfile=['C:\Users\zhouq\Dropbox\test.hdr'];
+outfile=['out3150_20170106.029.hdr'];
 outfid=fopen(outfile, 'w');
 
 

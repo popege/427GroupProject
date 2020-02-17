@@ -11,14 +11,14 @@ function []=anz_meteor3(filein, inps);
     %   e.g., pwr99/ne9902.dat
     %input_filename='C:\Users\zhouq\Documents\ISR201501\t2963_20150102.104'
     %input_filename='F:\t1193_Jun2009_rawIL\t1193_24jun2009.023'
-    input_filename='C:\Users\zhouq\Dropbox\StudyAway2019_20\GoogleShare\ISR_data\t3150_20170104.022'
+    input_filename='t3150_20170104.022'
 %end
 
 
 fid=fopen(input_filename, 'r', 'b');        %open the input data file
 if fid <=0, disp( [ 'Cannot open input file: ', input_filename,]); return, end
 
-outfile=['C:\Users\zhouq\Dropbox\out.hdr'];
+outfile=['out3150_20170106.029.hdr'];
 outfid=fopen(outfile, 'w');
 
 

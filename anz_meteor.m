@@ -9,13 +9,13 @@ if nargin <= 0,
     %   e.g., pwr99/ne9902.dat
     % input_filename='C:\Users\zhouq\Dropbox\t2574_20dec2011.092',
     % input_filename='C:\Users\zhouq\Dropbox\04jul2006c2.spec'
-    input_filename='C:\Users\zhouq\Dropbox\StudyAway2019_20\GoogleShare\ISR_data\t3150_20170104.022'
+    input_filename='t3150_20170104.022'
 end
 
 fid=fopen(input_filename, 'r', 'b');        %open the input data file
 if fid <=0, disp( [ 'Cannot open input file: ', input_filename,]); return, end
 
-outfile=['C:\Users\zhouq\Dropbox\test.hdr'];
+outfile=['out3150_20170106.029.hdr'];
 outfid=fopen(outfile, 'w');
 
 
