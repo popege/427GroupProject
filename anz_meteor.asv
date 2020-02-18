@@ -3,12 +3,15 @@ function []=anz_meteor(filein, inps);
 % CONTROLS                                                               %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 FILE_IN = 't3150_20170104.022'
-FILE_OUT = 'out3150_20170106.029.hdr'
-PLOT = false;
-PAUSE = false;
-data_point_skip = 2000;
-PRINT_STANDARD = false;
-RF_FREQUENCY = 270; %original 440, 270 is optimal for meteor detection
+FILE_OUT = 'test.hdr'%'out3150_20170106.029.hdr'
+PLOT = true;
+PAUSE = true;
+paus
+data_point_skip = 4000;
+data_smoothing_lvl = 50; %2-1000, standard = 50
+PRINT_STANDARD = true;
+PRINT_ALL_TO_OUTFILE = true;
+RF_FREQUENCY = 440; %original 440, 270 is optimal for meteor detection
 % meteor data has a RF length of 270. floating data is dat1r
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -47,7 +50,7 @@ fprintf(outfid, '\n %s', ['irec is when number of data points', ...
 'in a record changes.']);
 fprintf(outfid, '\n \n %s', header1);
 
-for irec=1:999999, %990099
+for irec=1:990099, 
     
     [hdr,ihdr,fhdr,dat1r,eof]=readrec(fid);
     [hdr]=interpret_raw2(hdr, ihdr, fhdr);
@@ -55,7 +58,7 @@ for irec=1:999999, %990099
     % meteor data has a RF length of 270. floating data is dat1r
     if (hdr.rfLen == RF_FREQUENCY) %original set to 440
         cxd1r=iq2complex(dat1r);        % convert record into complex
-        if hdr.datnp ~= ndatpts_1 | nsum == 50,              % start a new sum
+        if hdr.datnp ~= ndatpts_1 | nsum == data_smoothing_lvl,              % start a new sum
             if nsum > 1, 
                     if PLOT
                     subplot(3, 1, 1)
@@ -103,6 +106,9 @@ for irec=1:999999, %990099
      if floor(irec/data_point_skip)*data_point_skip == irec | irec==1, 
          if ~PRINT_STANDARD
             fprintf( datFormat, paraOut{:} );
+            if PRINT_ALL_TO_OUTFILE
+            fprintf(outfid,  datFormat,  paraOut{:} );
+            end
          end
      end
     
@@ -114,8 +120,9 @@ end
 
 % display or write to file the last record
 fprintf( datFormat, paraOut{:} );
+if ~PRINT_ALL_TO_OUTFILE
 fprintf(outfid,  datFormat,  paraOut{:} );
-
+end
 disp( sprintf('\n record number read= %g', irec) );
 
 fclose(fid);

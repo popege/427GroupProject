@@ -4,12 +4,14 @@ function []=anz_meteor(filein, inps);
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 FILE_IN = 't3150_20170104.022'
 FILE_OUT = 'test.hdr'%'out3150_20170106.029.hdr'
-PLOT = false;
-PAUSE = false;
-data_point_skip = 2000;
-PRINT_STANDARD = false;
+PLOT = true;
+PAUSE = true;
+pause_time = .2; %2 standard, seconds between frames .1 - 3.0
+data_point_skip = 4000;
+data_smoothing_lvl = 50; %2-1000, standard = 50
+PRINT_STANDARD = true;
 PRINT_ALL_TO_OUTFILE = true;
-RF_FREQUENCY = 270; %original 440, 270 is optimal for meteor detection
+RF_FREQUENCY = 440; %original 440, 270 is optimal for meteor detection
 % meteor data has a RF length of 270. floating data is dat1r
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -56,7 +58,7 @@ for irec=1:990099,
     % meteor data has a RF length of 270. floating data is dat1r
     if (hdr.rfLen == RF_FREQUENCY) %original set to 440
         cxd1r=iq2complex(dat1r);        % convert record into complex
-        if hdr.datnp ~= ndatpts_1 | nsum == 50,              % start a new sum
+        if hdr.datnp ~= ndatpts_1 | nsum == data_smoothing_lvl,              % start a new sum
             if nsum > 1, 
                     if PLOT
                     subplot(3, 1, 1)
@@ -76,7 +78,7 @@ for irec=1:990099,
                     xlabel('Data index'); ylabel(' one pulse del-phase (rad)');
                     axis tight;grid;
                     if PAUSE
-                        pause(2);  % this slows down the program
+                        pause(pause_time);  % this slows down the program
                     end
                 end
             end
