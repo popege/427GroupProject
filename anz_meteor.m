@@ -2,6 +2,8 @@ function []=anz_meteor(filein, inps);
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % CONTROLS                                                               %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+FILE_IN = 't3150_20170104.022'
+FILE_OUT = 'out3150_20170106.029.hdr'
 PLOT = false;
 PAUSE = false;
 data_point_skip = 2000;
@@ -20,13 +22,13 @@ if nargin <= 0,
     %   e.g., pwr99/ne9902.dat
     % input_filename='C:\Users\zhouq\Dropbox\t2574_20dec2011.092',
     % input_filename='C:\Users\zhouq\Dropbox\04jul2006c2.spec'
-    input_filename='t3150_20170104.022'
+    input_filename=FILE_IN
 end
 
 fid=fopen(input_filename, 'r', 'b');        %open the input data file
 if fid <=0, disp( [ 'Cannot open input file: ', input_filename,]); return, end
 
-outfile=['out3150_20170106.029.hdr'];
+outfile=[FILE_OUT];
 outfid=fopen(outfile, 'w');
 
 
