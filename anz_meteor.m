@@ -3,11 +3,12 @@ function []=anz_meteor(filein, inps);
 % CONTROLS                                                               %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 FILE_IN = 't3150_20170104.022'
-FILE_OUT = 'out3150_20170106.029.hdr'
+FILE_OUT = 'test.hdr'%'out3150_20170106.029.hdr'
 PLOT = false;
 PAUSE = false;
 data_point_skip = 2000;
-PRINT_STANDARD = true;
+PRINT_STANDARD = false;
+PRINT_ALL_TO_OUTFILE = true;
 RF_FREQUENCY = 270; %original 440, 270 is optimal for meteor detection
 % meteor data has a RF length of 270. floating data is dat1r
 
@@ -47,7 +48,7 @@ fprintf(outfid, '\n %s', ['irec is when number of data points', ...
 'in a record changes.']);
 fprintf(outfid, '\n \n %s', header1);
 
-for irec=1:990099,
+for irec=1:990099, 
     
     [hdr,ihdr,fhdr,dat1r,eof]=readrec(fid);
     [hdr]=interpret_raw2(hdr, ihdr, fhdr);
@@ -103,6 +104,9 @@ for irec=1:990099,
      if floor(irec/data_point_skip)*data_point_skip == irec | irec==1, 
          if ~PRINT_STANDARD
             fprintf( datFormat, paraOut{:} );
+            if PRINT_ALL_TO_OUTFILE
+            fprintf(outfid,  datFormat,  paraOut{:} );
+            end
          end
      end
     
@@ -114,8 +118,9 @@ end
 
 % display or write to file the last record
 fprintf( datFormat, paraOut{:} );
+if ~PRINT_ALL_TO_OUTFILE
 fprintf(outfid,  datFormat,  paraOut{:} );
-
+end
 disp( sprintf('\n record number read= %g', irec) );
 
 fclose(fid);
