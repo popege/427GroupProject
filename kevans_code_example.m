@@ -7,10 +7,13 @@ function kevans_code_example;
      %example of obstracting this data
      fprintf('\nthis is a header (hdr)\n')
      arr_440s(1).header
+     
      fprintf('\nthese are the first 5 data points of index (record) 1\n')
      all_data_points = arr_440s(1).data;
      first_five = all_data_points(1:5);
      fprintf('\t%g %g %g %g %g\n',first_five)
+     
+     %filter for meteors
      meteors_200s = meteor_filter(arr_200s);
      meteors_440s = meteor_filter(arr_440s);
      meteors_52s = meteor_filter(arr_52s);
