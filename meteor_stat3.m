@@ -78,7 +78,7 @@ meteor_ht=hts(begID);
 % output parameters
 meteor.date = hdr.date;
 meteor.time = hdr.asthr;
-meteor.ht = meteor_ht;
+meteor.ht = meteor_ht
 meteor.vel = aVel;
 
 figure(2)
