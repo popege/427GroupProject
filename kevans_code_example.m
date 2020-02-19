@@ -22,4 +22,10 @@ function kevans_code_example;
      meteor_stats=meteors_52s(1).meteor_stats
      meteor_header=meteors_52s(1).header;
      meteor_data=meteors_52s(1).data;
+     
+     %not confirmed just number of hits
+     fprintf('\nnumber of meteor detections per rfLen\n')
+     fprintf('\n\trfLen of 440 found %g meteors\n',size(meteors_440s,2))
+     fprintf('\trfLen of 200 found %g meteors\n',size(meteors_200s,2))
+     fprintf('\trfLen of 52 found %g meteors\n',size(meteors_52s,2))
 end
