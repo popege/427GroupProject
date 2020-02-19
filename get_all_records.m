@@ -23,14 +23,17 @@ for irec=1:999999,
     if eof; break, end;
     
     [hdr]=interpret_raw2(hdr, ihdr, fhdr);
+    
+    index = struct('header',hdr,'data',dat1r); %creates a new object, {header, data}
+    
     if(hdr.rfLen == 440)
-        arr_440s(count_440) = hdr;
+        arr_440s(count_440) = index;
         count_440 = count_440 + 1;
     elseif(hdr.rfLen == 200)
-        arr_200s(count_200) = hdr;
+        arr_200s(count_200) = index;
         count_200 = count_200 + 1;
     else
-        arr_52s(count_52) = hdr;
+        arr_52s(count_52) = index;
         count_52 = count_52 + 1;
     end
 end
