@@ -30,7 +30,7 @@ for irec=1:999999,
         arr_200s(count_200) = hdr;
         count_200 = count_200 + 1;
     else
-        arr_52s(3,count_52) = hdr;
+        arr_52s(count_52) = hdr;
         count_52 = count_52 + 1;
     end
 end

@@ -1,0 +1,7 @@
+
+ data file:     t3150_20170104.022
+ irec is when number of data pointsin a record changes.
+ 
+ irec   date   ast_hr ndat/rec az  rfL IPP nTx  gd nipp
+     1  2017005  7.44  24400 285.0 200   4 120  400 10
+   751  2017005  7.45  10560 285.0 440  10 240  600  2
