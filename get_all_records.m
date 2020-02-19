@@ -1,5 +1,6 @@
-% opens file, returns 3 arrays of hdrs, seperated by rfLen.
+% opens file, returns 3 arrays of hdrs and data, seperated by rfLen.
 % example run:  [arr_440s, arr_200s, arr_52s] = get_all_records();
+% the arrays will look like this, [{hdr, data} , {hdr, data} ,... etc}]
 function [arr_440s, arr_200s, arr_52s] = get_all_records()
 %CONTROLS
 input_filename='t3150_20170104.022'
