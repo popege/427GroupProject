@@ -30,17 +30,30 @@ function arr = kevans_code_example;
      fprintf('\trfLen of 52 found %g meteors\n',size(meteors_52s,2))
      
      %lets abstract all meteor heights
+     %and times
      c=1;
      for i = 1:size(meteors_440s,2)
-         arr(c)=meteors_440s(i).meteor_stats.ht;
+         arr_heights(c)=meteors_440s(i).meteor_stats.ht;
+         arr_times(c)=meteors_440s(i).meteor_stats.time;
          c = c+1;
      end
      for j = 1:size(meteors_200s,2)
-         arr(c)=meteors_200s(j).meteor_stats.ht;
+         arr_heights(c)=meteors_200s(j).meteor_stats.ht;
+         arr_times(c)=meteors_200s(j).meteor_stats.time;
          c = c+1;
      end
      for z = 1:size(meteors_52s,2)
-         arr(c)=meteors_52s(z).meteor_stats.ht;
+         arr_heights(c)=meteors_52s(z).meteor_stats.ht;
+         arr_times(c)=meteors_52s(z).meteor_stats.time;
          c = c+1;
      end
+     arr_temp= [ arr_heights; arr_times ];
+     %sort by time
+     arr = sortrows(arr_temp,2);
+     figure(1)
+     scatter(arr(1,:),arr(2,:))
+     title('Time vs Meteor Heights')
+     xlabel('time')
+     ylabel('height (km)')
+     
 end
