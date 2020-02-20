@@ -2,8 +2,9 @@
 % example run:  [arr_440s, arr_200s, arr_52s] = get_all_records();
 % the arrays will look like this, [{hdr, data} , {hdr, data} ,... etc}]
 function [arr_440s, arr_200s, arr_52s] = get_all_records()
-%CONTROLS
+%----CONTROLS----%
 input_filename='t3150_20170104.022'
+%----------------%
 
 %check if files are valid
 fid=fopen(input_filename, 'r', 'b');        %open the input data file

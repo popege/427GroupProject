@@ -1,4 +1,4 @@
-function kevans_code_example;
+function arr = kevans_code_example;
      %This reads in the input file, then filters by rfLength.
      %arr is an array of 440s where each cell contains both the header
      %  and the data as so {header, data}
@@ -28,4 +28,19 @@ function kevans_code_example;
      fprintf('\n\trfLen of 440 found %g meteors\n',size(meteors_440s,2))
      fprintf('\trfLen of 200 found %g meteors\n',size(meteors_200s,2))
      fprintf('\trfLen of 52 found %g meteors\n',size(meteors_52s,2))
+     
+     %lets abstract all meteor heights
+     c=1;
+     for i = 1:size(meteors_440s,2)
+         arr(c)=meteors_440s(i).meteor_stats.ht;
+         c = c+1;
+     end
+     for j = 1:size(meteors_200s,2)
+         arr(c)=meteors_200s(j).meteor_stats.ht;
+         c = c+1;
+     end
+     for z = 1:size(meteors_52s,2)
+         arr(c)=meteors_52s(z).meteor_stats.ht;
+         c = c+1;
+     end
 end
