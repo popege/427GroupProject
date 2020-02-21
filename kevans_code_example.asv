@@ -3,13 +3,7 @@ function arr = kevans_code_example;
      %arr_440s is an array of 440s where each cell contains both the header
      %  and the data as so {header, data}
      [arr_440s_f1, arr_200s_f1, arr_52s_f1] = get_all_records('t3150_20170104.022');
-     [arr_440s_f2, arr_200s_f2, arr_52s_f2] = get_all_records('t3150_20170104.022');
-     
-     %conglomerate 
-     arr_440s = [arr_440s_f1, arr_440s_f2];
-     arr_200s = [arr_200s_f1, arr_200s_f2];
-     arr_52s  = [arr_52s_f1, arr_52s_f2];
-     
+     [arr_440s_, arr_200s, arr_52s] = get_all_records('t3150_20170104.022');
      %example of obstracting this data
      fprintf('\nthis is a header (hdr)\n')
      arr_440s(1).header
