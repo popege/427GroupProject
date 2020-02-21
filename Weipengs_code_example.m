@@ -63,7 +63,7 @@ function arr1 = kevans_code_example;
      scatter(arr2(1,:),arr2(2,:))
      hold on;
      scatter(arr3(1,:),arr3(2,:))
-     legend('meteors_440s','meteors_200s','meteors_52s');
+     legend('meteors440s','meteors200s','meteors52s');
      hold off;
      title('Time vs Meteor Heights')
      xlabel('time')
