@@ -120,8 +120,8 @@ function arr = kevans_code_example(meteors_440s, meteors_200s, meteors_52s);
      end_time=max([arr1(1,end) arr2(1,end) arr3(1,end)]);
      
      %------controls------%
-     num_divisions = 3; 
-     limiting_factor = 0; %max number of meteors per instance
+     num_divisions = 100; 
+     limiting_factor = 5 %max number of meteors per instance
      %--------------------%
      
      tua = ( end_time - start_time ) / num_divisions
@@ -132,9 +132,7 @@ function arr = kevans_code_example(meteors_440s, meteors_200s, meteors_52s);
      cur_tua = arr1(1,1);
      for i=1:length(arr1)
         if(arr1(1,i)<=cur_tua)
-            if(num_meteors_per_tua_440s(1,c) < limiting_factor || limiting_factor == 0) %limiting factor
-                num_meteors_per_tua_440s(1,c) = num_meteors_per_tua_440s(1,c) + 1;
-            end
+            num_meteors_per_tua_440s(1,c) = num_meteors_per_tua_440s(1,c) + 1;
         else
             num_meteors_per_tua_440s(2,c) = cur_tua;
             c=c+1;
@@ -147,9 +145,7 @@ function arr = kevans_code_example(meteors_440s, meteors_200s, meteors_52s);
      cur_tua = arr2(1,1);
      for i=1:length(arr2)
         if(arr2(1,i)<=cur_tua)
-            if(num_meteors_per_tua_200s(1,c) < limiting_factor || limiting_factor == 0) %limiting factor
-                num_meteors_per_tua_200s(1,c) = num_meteors_per_tua_200s(1,c) + 1;
-            end
+            num_meteors_per_tua_200s(1,c) = num_meteors_per_tua_200s(1,c) + 1;
         else
             num_meteors_per_tua_200s(2,c) = cur_tua;
             c=c+1;
@@ -162,7 +158,7 @@ function arr = kevans_code_example(meteors_440s, meteors_200s, meteors_52s);
      cur_tua = arr3(1,1);
      for i=1:length(arr3)
         if(arr3(1,i)<=cur_tua)
-            if(num_meteors_per_tua_52s(1,c) < limiting_factor || limiting_factor == 0) %limiting factor
+            if(num_meteors_per_tua_52s(1,c) < limiting_factor) %limiting factor
                 num_meteors_per_tua_52s(1,c) = num_meteors_per_tua_52s(1,c) + 1;
             end
         else
