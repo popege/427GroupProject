@@ -37,50 +37,7 @@ function arr = kevans_code_example(meteors_440s, meteors_200s, meteors_52s);
      
      %lets obstract all meteor heights
      %and times
-     c=1;
-     %{
-     for i = 1:size(meteors_440s,2)
-         arr_heights(c)=meteors_440s(i).meteor_stats.ht;
-         arr_times(c)=meteors_440s(i).meteor_stats.time;
-         arr_velocitys(c) = meteors_440s(i).meteor_stats.vel;
-         c = c+1;
-     end
-     for j = 1:size(meteors_200s,2)
-         arr_heights(c)=meteors_200s(j).meteor_stats.ht;
-         arr_times(c)=meteors_200s(j).meteor_stats.time;
-         arr_velocitys(c) = meteors_200s(j).meteor_stats.vel;
-         c = c+1;
-     end
-     for z = 1:size(meteors_52s,2)
-         arr_heights(c)=meteors_52s(z).meteor_stats.ht;
-         arr_times(c)=meteors_52s(z).meteor_stats.time;
-         arr_velocitys(c) = meteors_52s(z).meteor_stats.vel;
-         c = c+1;
-     end
-     arr_temp= [ arr_heights; arr_times ];
-     %sort by time
-     arr = sortrows(arr_temp,2);
-     arr2 = [ arr_heights; arr_velocitys];
-     
-     figure(1)
-     scatter(arr(1,:),arr(2,:))
-     title('Time vs Meteor Heights')
-     xlabel('time')
-     ylabel('height (km)')
-     yline(85,'-','Thermosphere')
-     % height vs velocity, mayeb this should be seperated by rflen? three
-     % lines
-     figure(2)
-     arr2 = sortrows(arr2,1);
-     plot(arr2(2,:),arr2(1,:))
-     %atmosphere levels
-     %Thermosphere 85 km to 500 km
-     %Mesosphere 50 km to 85 km
-     %stratospher 11 km to 50 km
-     %troposphere 0 to 10 km
-     %}
-     
-
+    
      for i = 1:size(meteors_440s,2)
          arr_heights_440s(i)=meteors_440s(i).meteor_stats.ht;
          arr_times_440s(i)=meteors_440s(i).meteor_stats.time;
@@ -183,4 +140,7 @@ function arr = kevans_code_example(meteors_440s, meteors_200s, meteors_52s);
      plot(1:length(num_meteors_per_tua_52s),num_meteors_per_tua_52s(1,:))
      legend('meteors440s','meteors200s','meteors52s');
      hold off;
+     title('Number of Meteors V. Time Interval')
+     xlabel(['time interval of tua (tua = ',num2str(tua),'h)'])
+     ylabel('number of meteors')
 end
