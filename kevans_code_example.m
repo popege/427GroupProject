@@ -76,15 +76,24 @@ function arr = kevans_code_example(meteors_440s, meteors_200s, meteors_52s);
      start_time=min([arr1(1,1) arr2(1,1) arr3(1,1)]);
      end_time=max([arr1(1,end) arr2(1,end) arr3(1,end)]);
      
+     %----good--pairs-----%
+     %{5,20}
+     % allowable rate may be 10 meteors per minute tops 
+     % accourding to zhou article http://www.naic.edu/~djanches/Icarus00b.pdf
      %------controls------%
-     num_divisions = 3; 
-     limiting_factor = 20; %max number of meteors per instance
+     num_divisions = 4; 
+     
+     tua = ( end_time - start_time ) / num_divisions %not a control!%
+     
+     limiting_factor = 100; %max number of meteors per instance
+     limiting_factor = (tua*60)*10;
      %--------------------%
      
-     tua = ( end_time - start_time ) / num_divisions
+     
      %get arrays
      
      num_meteors_per_tua_440s = zeros(2,num_divisions + 1);
+  
      c = 1;
      cur_tua = start_time;
      for i=1:length(arr1)
@@ -139,6 +148,7 @@ function arr = kevans_code_example(meteors_440s, meteors_200s, meteors_52s);
      plot(1:length(num_meteors_per_tua_200s),num_meteors_per_tua_200s(1,:))
      hold on;
      plot(1:length(num_meteors_per_tua_52s),num_meteors_per_tua_52s(1,:))
+     
      legend('meteors440s','meteors200s','meteors52s');
      hold off;
      title('Number of Meteors V. Time Interval')
