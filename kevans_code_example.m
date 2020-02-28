@@ -38,6 +38,7 @@ function arr = kevans_code_example(meteors_440s, meteors_200s, meteors_52s);
      %lets obstract all meteor heights
      %and times
      c=1;
+     %{
      for i = 1:size(meteors_440s,2)
          arr_heights(c)=meteors_440s(i).meteor_stats.ht;
          arr_times(c)=meteors_440s(i).meteor_stats.time;
@@ -60,6 +61,7 @@ function arr = kevans_code_example(meteors_440s, meteors_200s, meteors_52s);
      %sort by time
      arr = sortrows(arr_temp,2);
      arr2 = [ arr_heights; arr_velocitys];
+     
      figure(1)
      scatter(arr(1,:),arr(2,:))
      title('Time vs Meteor Heights')
@@ -76,6 +78,41 @@ function arr = kevans_code_example(meteors_440s, meteors_200s, meteors_52s);
      %Mesosphere 50 km to 85 km
      %stratospher 11 km to 50 km
      %troposphere 0 to 10 km
+     %}
      
+
+     for i = 1:size(meteors_440s,2)
+         arr_heights_440s(i)=meteors_440s(i).meteor_stats.ht;
+         arr_times_440s(i)=meteors_440s(i).meteor_stats.time;
+     end
+     for j = 1:size(meteors_200s,2)
+         arr_heights_200s(j)=meteors_200s(j).meteor_stats.ht;
+         arr_times_200s(j)=meteors_200s(j).meteor_stats.time;
+     end
+     for z = 1:size(meteors_52s,2)
+         arr_heights_52s(z)=meteors_52s(z).meteor_stats.ht;
+         arr_times_52s(z)=meteors_52s(z).meteor_stats.time;
+     end
+     arr_temp1= [ arr_heights_440s; arr_times_440s ];
+     arr_temp2= [ arr_heights_200s; arr_times_200s ];
+     arr_temp3= [ arr_heights_52s; arr_times_52s ];
      
+     %sort by time
+     %arr1 = sortrows(arr_temp1,2);
+     %arr2 = sortrows(arr_temp2,2);
+     %arr3 = sortrows(arr_temp3,2);
+     arr1 = arr_temp1;
+     arr2 = arr_temp2;
+     arr3 = arr_temp3;
+     figure(1)
+     scatter(arr1(2,:),arr1(1,:))
+     hold on;
+     scatter(arr2(2,:),arr2(1,:))
+     hold on;
+     scatter(arr3(2,:),arr3(1,:))
+     legend('meteors440s','meteors200s','meteors52s');
+     hold off;
+     title('Time vs Meteor Heights')
+     xlabel('time')
+     ylabel('height (km)')
 end
