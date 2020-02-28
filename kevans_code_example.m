@@ -86,7 +86,7 @@ function arr = kevans_code_example(meteors_440s, meteors_200s, meteors_52s);
      
      num_meteors_per_tua_440s = zeros(2,num_divisions + 1);
      c = 1;
-     cur_tua = arr1(1,1);
+     cur_tua = start_time;
      for i=1:length(arr1)
         if(arr1(1,i)<=cur_tua)
             if(num_meteors_per_tua_440s(1,c) < limiting_factor || limiting_factor == 0) %limiting factor
@@ -101,7 +101,7 @@ function arr = kevans_code_example(meteors_440s, meteors_200s, meteors_52s);
      
      num_meteors_per_tua_200s = zeros(2,num_divisions + 1);
      c = 1;
-     cur_tua = arr2(1,1);
+     cur_tua = start_time
      for i=1:length(arr2)
         if(arr2(1,i)<=cur_tua)
             if(num_meteors_per_tua_200s(1,c) < limiting_factor || limiting_factor == 0) %limiting factor
@@ -116,7 +116,7 @@ function arr = kevans_code_example(meteors_440s, meteors_200s, meteors_52s);
      
      num_meteors_per_tua_52s = zeros(2,num_divisions + 1);
      c = 1;
-     cur_tua = arr3(1,1);
+     cur_tua = start_time
      for i=1:length(arr3)
         if(arr3(1,i)<=cur_tua)
             if(num_meteors_per_tua_52s(1,c) < limiting_factor || limiting_factor == 0) %limiting factor
@@ -133,6 +133,7 @@ function arr = kevans_code_example(meteors_440s, meteors_200s, meteors_52s);
      num_meteors_per_tua_52s
      
      figure(2) % plot of heights at times
+     %plot(1:length(num_meteors_per_tua_440s),num_meteors_per_tua_440s(1,:))
      plot(1:length(num_meteors_per_tua_440s),num_meteors_per_tua_440s(1,:))
      hold on;
      plot(1:length(num_meteors_per_tua_200s),num_meteors_per_tua_200s(1,:))
@@ -141,7 +142,7 @@ function arr = kevans_code_example(meteors_440s, meteors_200s, meteors_52s);
      legend('meteors440s','meteors200s','meteors52s');
      hold off;
      title('Number of Meteors V. Time Interval')
-     xlabel(['time interval of tua (tua = ',num2str(tua),'h)'])
+     xlabel(['time interval of tua (tua = ',num2str(tua * 60),'min)'])
      ylabel('number of meteors')
      
      
