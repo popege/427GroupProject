@@ -81,11 +81,11 @@ function arr = kevans_code_example(meteors_440s, meteors_200s, meteors_52s);
      % allowable rate may be 10 meteors per minute tops 
      % accourding to zhou article http://www.naic.edu/~djanches/Icarus00b.pdf
      %------controls------%
-     num_divisions = 4; 
+     num_divisions = 10; 
      
      tua = ( end_time - start_time ) / num_divisions %not a control!%
      
-     limiting_factor = 100; %max number of meteors per instance
+     limiting_factor = 0; %max number of meteors per instance
      limiting_factor = (tua*60)*10;
      %--------------------%
      
