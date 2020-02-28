@@ -78,7 +78,7 @@ function arr = kevans_code_example(meteors_440s, meteors_200s, meteors_52s);
      
      %------controls------%
      num_divisions = 3; 
-     limiting_factor = 0; %max number of meteors per instance
+     limiting_factor = 20; %max number of meteors per instance
      %--------------------%
      
      tua = ( end_time - start_time ) / num_divisions
@@ -143,4 +143,7 @@ function arr = kevans_code_example(meteors_440s, meteors_200s, meteors_52s);
      title('Number of Meteors V. Time Interval')
      xlabel(['time interval of tua (tua = ',num2str(tua),'h)'])
      ylabel('number of meteors')
+     
+     
+     
 end
