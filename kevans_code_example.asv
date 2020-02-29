@@ -37,27 +37,21 @@ function arr = kevans_code_example(meteors_440s, meteors_200s, meteors_52s);
      
      %lets obstract all meteor heights
      %and times
-     
+    
      for i = 1:size(meteors_440s,2)
          arr_heights_440s(i)=meteors_440s(i).meteor_stats.ht;
          arr_times_440s(i)=meteors_440s(i).meteor_stats.time;
          if(i~=1 && arr_times_440s(i)<arr_times_440s(i-1))
-             arr_times_440s(i) = arr_times_440s(i) + 24;
+             arr_times_440s(i) = 
          end
      end
      for j = 1:size(meteors_200s,2)
          arr_heights_200s(j)=meteors_200s(j).meteor_stats.ht;
          arr_times_200s(j)=meteors_200s(j).meteor_stats.time;
-         if(j~=1 && arr_times_200s(j)<arr_times_200s(j-1))
-             arr_times_200s(j) = arr_times_200s(j) + 24;
-         end
      end
      for z = 1:size(meteors_52s,2)
          arr_heights_52s(z)=meteors_52s(z).meteor_stats.ht;
          arr_times_52s(z)=meteors_52s(z).meteor_stats.time;
-         if(z~=1 && arr_times_52s(z)<arr_times_52s(z-1))
-             arr_times_52s(z) = arr_times_52s(z) + 24;
-         end
      end
      arr_temp1= [ arr_heights_440s; arr_times_440s ];
      arr_temp2= [ arr_heights_200s; arr_times_200s ];
@@ -90,7 +84,7 @@ function arr = kevans_code_example(meteors_440s, meteors_200s, meteors_52s);
      % allowable rate may be 10 meteors per minute tops 
      % accourding to zhou article http://www.naic.edu/~djanches/Icarus00b.pdf
      %------controls------%
-     num_divisions = 22; 
+     num_divisions = 40; 
      
      tua = ( abs(end_time - start_time) ) / num_divisions %not a control!%
      if(end_time < start_time)
